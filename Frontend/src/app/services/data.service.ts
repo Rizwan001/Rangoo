@@ -7,8 +7,14 @@ import { map } from 'rxjs/operators';
 })
 export class DataService {
 
-  constructor(private http: HttpClient) { 
+ UserUrl:String = 'http://192.168.100.23:3000/';
+ ConsumptionUrl = 'http://192.168.100.23:3000/api/queries/GetConsumptionForTable?user=resource%3Awaltson.poc.hyperledger.User%23';
 
+ 
+
+
+  constructor(private http: HttpClient) { 
+   
   }
 
   getUsers(){
@@ -21,8 +27,18 @@ export class DataService {
 
 
 
-    return this.http.post('http://192.168.100.51:3000/api/User',newUser, {
+    return this.http.post(this.UserUrl+'api/User',newUser, {
       headers:new HttpHeaders().append('Content-Type','application/json')
     }).pipe(map(res =>res));
   }
+
+  
+
+  getConsumption(){
+      return this.http.get(this.ConsumptionUrl+11, {
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    }).pipe(map(res =>res));
+  }
+
+
 }

@@ -36,17 +36,23 @@ export class UserModelComponent implements OnInit {
   }
 
   openModal(id:any){
+    
     this.spinnerService.show();
   
     this.authService.getUserById(id).subscribe(res =>{
-      console.log('Response from data is ' , res['message']);
+      
       if(res['success'] === true){
+        console.log('Response from data is ' , res['message']);
         this.user = res['message'];
         this.activate = this.user.activate;
         this.spinnerService.hide();
-        $('#myModal').modal('show');
-
-
+        console.log('Open model inside user model',id);
+        // this.showAngularModal($("#myModal"));
+        $("#myModal").showAngularModal();
+        // $("#myModal").showAngularModal();
+        // $("body").addClass("modal-open");
+        // $("#myModal").addClass("show in");
+       // $('#myModal').modal('show');
       }
     });
   }

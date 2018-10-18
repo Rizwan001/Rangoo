@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import * as alertify from 'alertify.js';
 import {Router} from '@angular/router';
+import {FlashMessagesService} from 'angular2-flash-messages';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 declare var $:any
 
@@ -23,6 +24,7 @@ export class ForgetComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private flashMessage:FlashMessagesService,
     private spinnerService: Ng4LoadingSpinnerService
   ) {
     this.createForm();
@@ -73,6 +75,18 @@ export class ForgetComponent implements OnInit {
 
   // Function to check if e-mail is taken
   checkEmail() {
+
+        let email = this.form.get('email').value;
+        
+        if(email == null || email == '' || email == undefined)
+        {
+          this.flashMessage.show('Please enter an email address', {
+            cssClass:'alert-danger text-center',
+            timeout: 3000
+          });
+          alertify.logPosition('top right').error("Please enter an email address ");//example
+          return false;
+        }
           this.spinnerService.show();
     // Function from authentication file to check if e-mail is taken
     this.authService.checkEmail(this.form.get('email').value).subscribe(data => {
@@ -91,6 +105,7 @@ export class ForgetComponent implements OnInit {
         this.spinnerService.hide();
       }
     });
+  
   }
 
 

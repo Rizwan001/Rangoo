@@ -22,7 +22,7 @@
       <tr *ngFor="let user of users$">
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
-        <td> <span class="glyphicon glyphicon-pencil" (click)="openModal(user._id)"></span></td>
+        <td> <span  class="glyphicon glyphicon-pencil" (click)="openModal(user._id)">Edit</span></td>
       </tr>
     </tbody>
   </table>

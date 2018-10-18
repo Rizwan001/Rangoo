@@ -505,34 +505,84 @@ table > tbody > tr > td{
     background-repeat: no-repeat;
 }
 
+.c100 {
+    position: relative;
+    font-size: 120px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    float: none;
+    margin: 0 auto;
+    background-color: #cccccc;
+}
+.c100 {
+    position: relative;
+    font-size: 120px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    float: none;
+    margin: 0 auto;
+    background-color: #fff;
+}
 
-/*@media (min-width: 768px){*/
-    /*.nine-cols .col-md-1,*/
-    /*.nine-cols .col-sm-1,*/
-    /*.nine-cols .col-lg-1  {*/
-        /*width: 100%;*/
-        /**width: 100%;*/
-    /*}*/
-/*}*/
-
-/*@media (min-width: 992px) {*/
-    /*.nine-cols .col-md-1,*/
-    /*.nine-cols .col-sm-1,*/
-    /*.nine-cols .col-lg-1 {*/
-        /*width: 11.1111%;*/
-        /**width: 11.1111%;*/
-    /*}*/
-/*}*/
-
-/*!***/
- /**  The following is not really needed in this case*/
- /**  Only to demonstrate the usage of @media for large screens*/
- /**!*/
-/*@media (min-width: 1200px) {*/
-    /*.nine-cols .col-md-1,*/
-    /*.nine-cols .col-sm-1,*/
-    /*.nine-cols .col-lg-1 {*/
-        /*width: 11.1111%;*/
-        /**width: 111.1111%;*/
-    /*}*/
-/*}*/
+.wind-h{
+    font-size: 18px;
+    color: #716b6c;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+.c100:after {
+    position: absolute;
+    top: 0.08em;
+    left: 0.08em;
+    display: block;
+    content: " ";
+    border-radius: 50%;
+    background-color: #34495E;
+    width: 0.84em;
+}
+.c100 > span {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 5em;
+    line-height: 5em;
+    font-size: 0.2em;
+    color: #fff;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.img-chart{
+    height: 45px;
+    margin: 15px 10px;
+}
+.wind-text {
+    color: #4A4A4A;
+    font-weight: 700;
+    font-size: 18px;
+}
+.m-b-10-negv{
+    margin-bottom: -5px;
+}
+.border-charts{
+    border: 1px dashed #a4bfda;
+    padding: 15px 10px;
+    border-radius: 10px;
+    margin-right: 15px;
+}

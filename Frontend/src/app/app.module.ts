@@ -9,6 +9,7 @@ import {AuthService} from './services/auth.service';
 import {DataService} from './services/data.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 import { DataTablesModule } from 'angular-datatables';
 
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
@@ -24,8 +25,11 @@ import { UserModelComponent } from './components/user-model/user-model.component
 import { VerifyComponent } from './components/verify/verify.component';
 import { ForgetComponent } from './components/forget/forget.component';
 import { ResetComponent } from './components/reset/reset.component';
-
-
+import { UserpanelComponent } from './components/userpanel/userpanel.component';
+import { UserPanelNavbarComponent } from './components/user-panel-navbar/user-panel-navbar.component';
+import { UserEnergyMixComponent } from './components/user-energy-mix/user-energy-mix.component';
+import { UserPowerStorageComponent } from './components/user-power-storage/user-power-storage.component';
+import { UserTradeComponent } from './components/user-trade/user-trade.component';
 const appRoutes: Routes =  [
   {path:'', component: LoginComponent},
   {path:'register', component: RegisterComponent},
@@ -33,8 +37,9 @@ const appRoutes: Routes =  [
   {path:'forget', component: ForgetComponent},
   {path:'verify/:token', component: VerifyComponent},
   {path:'reset/:token', component: ResetComponent},
-  {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  {path:'dashboard', component: DashboardComponent, canActivate:[AdminGuard]},
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path:'userPanel', component: UserpanelComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -49,7 +54,12 @@ const appRoutes: Routes =  [
     UserModelComponent,
     VerifyComponent,
     ForgetComponent,
-    ResetComponent
+    ResetComponent,
+    UserpanelComponent,
+    UserPanelNavbarComponent,
+    UserEnergyMixComponent,
+    UserPowerStorageComponent,
+    UserTradeComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +75,7 @@ const appRoutes: Routes =  [
   ],
   providers: [ValidateService,AuthService,
               DataService,
-              AuthGuard,NgbActiveModal],
+              AuthGuard,NgbActiveModal, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

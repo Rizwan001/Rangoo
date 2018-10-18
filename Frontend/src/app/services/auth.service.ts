@@ -68,8 +68,9 @@ export class AuthService {
 
 
   loggedIn(){
-
+    
     if (localStorage.getItem('id_token') == undefined ){
+
      return false;
     } else {
   const helper = new JwtHelperService();
@@ -77,6 +78,19 @@ export class AuthService {
     }
    }
 
+
+   AdminloggedIn(){
+
+    var isAdmin = JSON.parse(localStorage.getItem("user")).isAdmin;
+    if(isAdmin)
+      return true;
+    else{
+    
+      return false;
+    }
+
+
+   }
 
 
   storeUserData(token, user){

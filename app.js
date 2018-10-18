@@ -6,14 +6,19 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
+//const uri = 'mongodb://rangooDb:rangoo1234***@ds133360.mlab.com:33360/rangoo'
 
 // Connect To Database
 
 mongoose.connect(config.database, {useNewUrlParser: true });
 
+//mongoose.connect(uri, {useNewUrlParser: true });
+
+
+
 // On Connection
 mongoose.connection.on('connected', () => {
-  console.log('Connected to database '+config.database);
+  console.log('Connected to database ');
 });
 
 // On Error

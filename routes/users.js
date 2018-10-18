@@ -92,7 +92,7 @@ router.post('/authenticate', (req, res, next) => {
       return res.json({success: false, msg: 'User not found'});
     }
 
-  //  console.log(user);
+
 
     User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
@@ -105,15 +105,15 @@ router.post('/authenticate', (req, res, next) => {
         const token = jwt.sign({data: user}, config.secret, {
           expiresIn: 604800 // 1 week
         });
-
+        user = JSON.parse(JSON.stringify(user));
         res.json({
           success: true,
           token: 'JWT '+token,
           user: {
             id: user._id,
-            name: user.name,
             username: user.username,
-            email: user.email
+            email: user.email,
+            isAdmin: user.isAdmin
           }
         });
 

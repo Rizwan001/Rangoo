@@ -45,7 +45,13 @@ this.spinnerService.show();
         alertify.logPosition('top right').success('Sucessfully login');
         this.authService.storeUserData(data['token'], data['user']);
         this.spinnerService.hide();
-        this.router.navigate(['dashboard']);
+        console.log('User resposne is ', data);
+        if(data['user']['isAdmin'] === true){
+          this.router.navigate(['profile']);
+        }else{
+          this.router.navigate(['userPanel']);
+        }
+        
       } else if(data['success'] === false) {
         alertify.logPosition('top right').error('Invalid username or password');
         this.spinnerService.hide();

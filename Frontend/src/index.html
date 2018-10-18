@@ -3,20 +3,30 @@
 <head>
   <meta charset="utf-8">
   <title>Rangoo App</title>
-  <!-- <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css"> -->
-  <!-- Latest compiled and minified CSS -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
- 
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="../src/assets/css/font-awesome.css">
-<link rel="stylesheet" href="../src/assets/css/themify-icons.css">
-<link rel="stylesheet" href="../src/assets/css/styles.css">
+  
 <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+  <script>
+   $("body").on('click', '.sidebar-toggle', function () {
+       $("body").toggleClass("is-collapsed");
+   });
+   $.fn.showAngularModal = function(){
+     this.modal();
+     this.show(1);
+     $("body").addClass("modal-open");
+     this.addClass("show in");
+   };
 
+   $.fn.hideAngularModal = function(){
+    this.show(1);
+     $("body").removeClass("modal-open");
+     this.removeClass("show in");
+   }
+ </script>
   <style>
       #loader {
         transition: all 0.3s ease-in-out;
@@ -65,16 +75,51 @@
         }
       }
     </style>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../src/assets/css/font-awesome.css">
+<link rel="stylesheet" href="../src/assets/css/themify-icons.css">
+<link rel="stylesheet" href="../src/assets/css/circle.css">
+<link rel="stylesheet" href="../src/assets/css/styles.css">
+<style>
+  .sidebar-menu::-webkit-scrollbar {
+      display: none;
+      width: 5px;
+  }
+
+  .sidebar-menu:hover > .sidebar-menu::-webkit-scrollbar {
+      display: block;
+  }
+
+  /* Track */
+  .sidebar-menu::-webkit-scrollbar-track {
+      background: #f1f1f1;
+  }
+
+  /* Handle */
+  .sidebar-menu::-webkit-scrollbar-thumb {
+      background: #2196f3 !important;
+  }
+
+  /* Handle on hover */
+  .sidebar-menu::-webkit-scrollbar-thumb:hover {
+      background: #2196f3 !important;
+  }
+
+  a:hover {
+      cursor: pointer;
+      cursor: hand;
+  }
+</style>
 </head>
-<body>
+<body class="app">
   <app-root></app-root>
- 
-  <!-- <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="../src/assets/scripts/custom.js"></script> 
 </body>
 </html>
