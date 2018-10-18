@@ -33,14 +33,23 @@ export class UserPanelNavbarComponent implements OnInit {
   ngOnInit() {
 
     this.dataService.getConsumption().subscribe(res =>{
-         this.energies = res.map(item => item.energyConsumed);
-         this.timestamps = res.map(item => item.timestamp.split("T")[0]);
+        this.energies = this.arrayMap(res, item => item.energyConsumed);       
+     this.timestamps = this.arrayMap(res, item => item.timestamp.split("T")[0])
          console.log('Consumption Response', res); 
         console.log('Consumption Response', this.timestamps);
         console.log('Consumption Response', this.energies);
         this.renderHighchart();
     
     });
+
+    this.dataService.getMix().subscribe(res=>{
+    
+        // console.log('Repsonse from mix is ',res['energyProductionDetails'][0]);
+        // console.log('Response for mix about energyResource', res['energyProductionDetails'][0]['energyResource']);
+        // console.log('Response for mix about percentage', res['energyProductionDetails'][0]['percentage']);
+        // console.log('Response for mix about production', res['energyProductionDetails'][0]['production']);
+        
+    })
 
 
     this.authService.getProfile().subscribe(profile => {
@@ -54,6 +63,16 @@ export class UserPanelNavbarComponent implements OnInit {
        return false;
      });
   }
+
+  arrayMap(obj, fn){   
+         var aray = [];  
+         for(var i = 0; i < obj.length; i++)
+         {     
+                aray.push(fn(obj[i])); 
+        }     
+                  return aray; 
+         }
+
 
   onLogoutClick(){
     this.authService.logout();

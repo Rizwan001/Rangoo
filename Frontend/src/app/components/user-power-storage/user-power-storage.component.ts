@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-user-power-storage',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPowerStorageComponent implements OnInit {
 
-  constructor() { }
+   energyProductionDetails:any;
+  constructor( private dataService:DataService) { }
 
   ngOnInit() {
+
+    this.dataService.getPowerStorateData().subscribe(res =>{
+      this.energyProductionDetails = res[0]['energyProductionDetails'];
+      
+      console.log('Power Storage Data', res[0]['energyProductionDetails']);
+    })
   }
 
 }
